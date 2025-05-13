@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Network Watchdog</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <h1>Network Status</h1>
+    <ul>
+      {% for name, is_online in status.items() %}
+      <li>
+        {{ name }}:
+        <span class="{{ 'online' if is_online else 'offline' }}">
+          {{ 'Online' if is_online else 'Offline' }}</span
+        >
+      </li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
