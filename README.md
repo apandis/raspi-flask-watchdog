@@ -29,8 +29,8 @@ A lightweight Flask-based network monitor for Raspberry Pi Zero v1. It periodica
 2. **Clone & setup**
 
    ```bash
-   git clone https://github.com/<your-username>/pi-net-watchdog.git
-   cd pi-net-watchdog
+   git clone https://github.com/apandis/raspi-flask-watchdog.git
+   cd raspi-flask-watchdog
    python3 -m venv venv
    source venv/bin/activate
    pip install -r requirements.txt
@@ -38,7 +38,7 @@ A lightweight Flask-based network monitor for Raspberry Pi Zero v1. It periodica
 
 3. **Configure**
 
-   - Copy `.env.example` to `.env` and populate:
+Copy `.env.example` to `.env` and populate:
 
      ```ini
      TELEGRAM_TOKEN=your_bot_token
@@ -48,7 +48,7 @@ A lightweight Flask-based network monitor for Raspberry Pi Zero v1. It periodica
      GOOGLE_IP=8.8.8.8
      ```
 
-4. **Install service**
+1. **Install service**
 
    ```bash
    sudo cp watchdog.service /etc/systemd/system/
@@ -82,7 +82,7 @@ SERVER2_IP=example.com
   sudo journalctl -u watchdog -f
   ```
 
-## Development & Testing
+## Development
 
 - Run without service:
 
@@ -90,13 +90,3 @@ SERVER2_IP=example.com
   source venv/bin/activate
   python run.py
   ```
-
-- Run unit tests (if available):
-
-  ```bash
-  pytest
-  ```
-
-## License
-
-MIT © Your Name
