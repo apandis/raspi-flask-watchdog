@@ -12,4 +12,4 @@ def start_scheduler():
         id='ping_check',
         replace_existing=True
     )
-    scheduler.start()
+    # scheduler.start() is already called in app/__init__.py
