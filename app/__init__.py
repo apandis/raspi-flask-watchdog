@@ -10,11 +10,17 @@ def create_app():
     app.config.from_object(Config)
 
     # Start background scheduler
-    scheduler.start()
-
-    # Initialize Telegram Bot now that env is loaded
+    scheduler.start()    # Initialize Telegram Bot now that env is loaded
     import app.extensions as ext
-    ext.bot = TelegramBot(token=app.config['TELEGRAM_TOKEN'])
+    if app.config['TELEGRAM_TOKEN']:
+        try:
+            ext.bot = TelegramBot(token=app.config['TELEGRAM_TOKEN'])
+        except Exception as e:
+            logger.error(f"Error initializing Telegram bot: {e}")
+            ext.bot = None
+    else:
+        logger.warning("TELEGRAM_TOKEN not provided. Telegram notifications disabled.")
+        ext.bot = None
 
     # Register blueprints
     app.register_blueprint(ui_bp)
