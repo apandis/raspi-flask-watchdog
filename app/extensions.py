@@ -1,13 +1,12 @@
 from apscheduler.schedulers.background import BackgroundScheduler
-from telegram import Bot
 import logging
 from logging.handlers import RotatingFileHandler
 
 # Scheduler singleton
 scheduler = BackgroundScheduler()
 
-# Telegram bot singleton; token set in create_app()
-bot = Bot(token=None)
+# Telegram Bot placeholder; real instance set in create_app()
+bot = None
 
 # Rotating file logger
 handler = RotatingFileHandler('watchdog.log', maxBytes=2**20, backupCount=3)
