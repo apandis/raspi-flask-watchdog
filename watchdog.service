@@ -3,10 +3,10 @@ Description=Network Watchdog
 After=network.target
 
 [Service]
-User=pi
-WorkingDirectory=/home/pi/pi-net-watchdog
-EnvironmentFile=/home/pi/pi-net-watchdog/.env
-ExecStart=/home/pi/pi-net-watchdog/venv/bin/python3 /home/pi/pi-net-watchdog/run.py
+User=apandis
+WorkingDirectory=/home/apandis/watchdog
+EnvironmentFile=/home/apandis/watchdog/.env
+ExecStart=/home/apandis/watchdog/venv/bin/python3 /home/apandis/watchdog/run.py
 Restart=always
 RestartSec=5
 
