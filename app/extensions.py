@@ -9,7 +9,9 @@ scheduler = BackgroundScheduler()
 bot = None
 
 # Rotating file logger
-handler = RotatingFileHandler('watchdog.log', maxBytes=2**20, backupCount=3)
+import os
+log_file = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'watchdog.log'))
+handler = RotatingFileHandler(log_file, maxBytes=2**20, backupCount=3)
 formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
 handler.setFormatter(formatter)
 

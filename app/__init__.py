@@ -6,11 +6,18 @@ from telegram import Bot as TelegramBot
 
 
 def create_app():
-    app = Flask(__name__)
-    app.config.from_object(Config)
-
-    # Start background scheduler
-    scheduler.start()    # Initialize Telegram Bot now that env is loaded
+    # Create Flask app with templates and static folders at project root level
+    import os
+    template_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'templates'))
+    static_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'static'))
+    
+    app = Flask(__name__, 
+                template_folder=template_dir,
+                static_folder=static_dir)
+    app.config.from_object(Config)    # Start background scheduler
+    scheduler.start()
+    
+    # Initialize Telegram Bot now that env is loaded
     import app.extensions as ext
     if app.config['TELEGRAM_TOKEN']:
         try:
